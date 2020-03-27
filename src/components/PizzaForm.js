@@ -95,30 +95,10 @@ export default function Form() {
                     <h4>Select your crust:</h4>
                 </label>
                 <select name="size" id="size">
-                    <option
-                        label="Select Size"
-                        value={null}
-                        value={formState.size}
-                        onChange={inputChange}
-                    />
-                    <option
-                        label="Large"
-                        value="large"
-                        value={formState.size}
-                        onChange={inputChange}
-                    />
-                    <option
-                        label="Medium"
-                        value="medium"
-                        value={formState.size}
-                        onChange={inputChange}
-                    />
-                    <option
-                        label="Small"
-                        value="small"
-                        value={formState.size}
-                        onChange={inputChange}
-                    />
+                    <option label="Select Size" value={null} />
+                    <option label="Large" value="large" />
+                    <option label="Medium" value="medium" />
+                    <option label="Small" value="small" />
                 </select>
             </div>
 
@@ -132,8 +112,7 @@ export default function Form() {
                         id="pizzaSauce" //change
                         type="radio" //same
                         name="sauce" //same
-                        value={formState.sauce} //change                    value={formState.name}
-                        onChange={inputChange}
+                        value="Pizza Sauce" //change
                     />
                 </label>
                 <label htmlFor="pizzaSauce">
@@ -142,8 +121,7 @@ export default function Form() {
                         id="healthySauce"
                         type="radio"
                         name="sauce"
-                        value={formState.sauce}
-                        onChange={inputChange}
+                        value="Healthy Sauce"
                     />
                 </label>
                 <label htmlFor="garlicSauce">
@@ -152,8 +130,7 @@ export default function Form() {
                         id="garlicSauce"
                         type="radio"
                         name="sauce"
-                        value={formState.sauce}
-                        onChange={inputChange}
+                        value="Garlic Parmesan Sauce"
                     />
                 </label>
                 <label htmlFor="bbqSauce">
@@ -162,8 +139,7 @@ export default function Form() {
                         id="bbqSauce"
                         type="radio"
                         name="sauce"
-                        value={formState.sauce}
-                        onChange={inputChange}
+                        value="BBQ Sauce"
                     />
                 </label>
                 <label htmlFor="alfredoSauce">
@@ -172,8 +148,7 @@ export default function Form() {
                         id="alfredoSauce"
                         type="radio"
                         name="sauce"
-                        value={formState.sauce}
-                        onChange={inputChange}
+                        value="Alfredo Sauce"
                     />
                 </label>
             </div>
@@ -184,86 +159,27 @@ export default function Form() {
                     is extra.)
                 </p>
                 <label htmlFor="pepperoni">Pepperoni</label>
-                <input
-                    type="checkbox"
-                    name="pepperoni"
-                    id="pepperoni"
-                    value={formState.toppings}
-                    onChange={inputChange}
-                />
+                <input type="checkbox" name="pepperoni" id="pepperoni" />
                 <label htmlFor="bacon">Bacon</label>
-                <input
-                    type="checkbox"
-                    name="bacon"
-                    id="bacon"
-                    value={formState.toppings}
-                    onChange={inputChange}
-                />
+                <input type="checkbox" name="bacon" id="bacon" />
                 <label htmlFor="chicken">Chicken</label>
-                <input
-                    type="checkbox"
-                    name="chicken"
-                    id="chicken"
-                    value={formState.toppings}
-                    onChange={inputChange}
-                />
+                <input type="checkbox" name="chicken" id="chicken" />
                 <label htmlFor="itSausage">Italian Sausage</label>
-                <input
-                    type="checkbox"
-                    name="itSausage"
-                    id="itSausage"
-                    value={formState.toppings}
-                    onChange={inputChange}
-                />
+                <input type="checkbox" name="itSausage" id="itSausage" />
                 <label htmlFor="sausage">Sausage</label>
-                <input
-                    type="checkbox"
-                    name="sausage"
-                    id="sausage"
-                    value={formState.toppings}
-                    onChange={inputChange}
-                />
+                <input type="checkbox" name="sausage" id="sausage" />
                 <label htmlFor="beef">Beef</label>
-                <input
-                    type="checkbox"
-                    name="beef"
-                    id="beef"
-                    value={formState.toppings}
-                    onChange={inputChange}
-                />
+                <input type="checkbox" name="beef" id="beef" />
                 <label htmlFor="salami">Salami</label>
-                <input
-                    type="checkbox"
-                    name="salami"
-                    id="salami"
-                    value={formState.toppings}
-                    onChange={inputChange}
-                />
+                <input type="checkbox" name="salami" id="salami" />
                 <label htmlFor="ham">Ham</label>
-                <input
-                    type="checkbox"
-                    name="ham"
-                    id="ham"
-                    value={formState.toppings}
-                    onChange={inputChange}
-                />
+                <input type="checkbox" name="ham" id="ham" />
                 <label htmlFor="phillySteak">Philly Steak</label>
-                <input
-                    type="checkbox"
-                    name="phillySteak"
-                    id="phillySteak"
-                    value={formState.toppings}
-                    onChange={inputChange}
-                />
+                <input type="checkbox" name="phillySteak" id="phillySteak" />
             </div>
             <div>
                 <label htmlFor="crust">Select your crust:</label>
-                <select
-                    name="crust"
-                    id="crust"
-                    value={formState.crust}
-                    onChange={inputChange}
-                >
+                <select name="crust" id="crust">
                     <option label="Select Crust" value={null} />
                     <option label="Thick" value="thick" />
                     <option label="Thin" value="thin" />
@@ -282,18 +198,16 @@ export default function Form() {
                 />
             </div>
             <div>
-                <label for="numberOfPizzas">
+                <label for="pizzaNumber">
                     <h5>Number of Pizzas:</h5>{" "}
                 </label>
                 <input
                     type="number"
-                    name="numberOfPizzas"
-                    id="numberOfPizzas"
+                    name="pizzaNumber"
+                    id="pizzaNumber"
                     min="1"
                     max="200"
                     step="1"
-                    value={formState.numberOfPizzas}
-                    onChange={inputChange}
                 />
             </div>
             <br />
@@ -301,9 +215,7 @@ export default function Form() {
 
             <div>
                 <button type="reset">Reset</button>
-                <button type="submit" disabled={greySubmit}>
-                    Add to order!
-                </button>
+                <button>Add to order!</button>
             </div>
         </form>
     );

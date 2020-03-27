@@ -8,7 +8,7 @@ const App = () => {
     return (
         <>
             <TopBanner />
-            <Route exact path="/login" component={Login} />
+            <Route path="/login" component={Login} />
             <div>
                 <Route exact path="/">
                     <Home />
