@@ -140,7 +140,9 @@ export default function Login() {
             <br />
             <pre>{JSON.stringify(post, null, 2)}</pre>
 
-            <button disabled={greyButton}>Submit</button>
+            <button id="loginSubmit" disabled={greyButton}>
+                Submit
+            </button>
         </form>
     );
 }

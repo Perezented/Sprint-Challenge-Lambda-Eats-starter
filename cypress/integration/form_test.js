@@ -1,4 +1,4 @@
-describe("A test for User Forms Project", function() {
+describe("A test for Single Page Applications Sprint", function() {
     it("Visiting the react app", function() {
         cy.visit("http://localhost:3000/login");
     });
@@ -10,7 +10,7 @@ describe("A test for User Forms Project", function() {
         //password
         cy.get(`input[id='password']`).should("have.length", 1);
     });
-    it("Add test to inputs and submit this form", function() {
+    it("Add test to inputs and submit login", function() {
         //name
         cy.get(`input[id='name']`)
             .type("Michael Perez")
@@ -27,6 +27,6 @@ describe("A test for User Forms Project", function() {
         cy.get(`[type='checkbox']`)
             .check()
             .should("be.checked"); //button
-        cy.get("button").click();
+        cy.get(`[id='loginSubmit']`).click();
     });
 });

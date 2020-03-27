@@ -96,9 +96,9 @@ export default function Form() {
                 </label>
                 <select name="size" id="size">
                     <option label="Select Size" value={null} />
-                    <option label="Large" value="large" />
-                    <option label="Medium" value="medium" />
-                    <option label="Small" value="small" />
+                    <option value="large">Large</option>
+                    <option value="medium">Medium</option>
+                    <option value="small">Small</option>
                 </select>
             </div>
 
@@ -181,9 +181,9 @@ export default function Form() {
                 <label htmlFor="crust">Select your crust:</label>
                 <select name="crust" id="crust">
                     <option label="Select Crust" value={null} />
-                    <option label="Thick" value="thick" />
-                    <option label="Thin" value="thin" />
-                    <option label="Gluten Free" value="glutenFree" />
+                    <option value="thick">Thick</option>
+                    <option value="thin">Thin</option>
+                    <option value="glutenFree">Gluten Free</option>
                 </select>
             </div>
             <div>
@@ -215,7 +215,7 @@ export default function Form() {
 
             <div>
                 <button type="reset">Reset</button>
-                <button>Add to order!</button>
+                <button id="addToOrder">Add to order!</button>
             </div>
         </form>
     );
