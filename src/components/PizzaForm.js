@@ -76,18 +76,49 @@ export default function Form() {
                     />
                 </label>
             </div>
-
-            <label htmlFor="">
-                <input id="" type="" name="" />
-            </label>
-            <label htmlFor="">
-                <input id="" type="" name="" />
-            </label>
-            <label htmlFor="">
-                <input id="" type="" name="" />
-            </label>
-            <label htmlFor="">
-                <input id="" type="" name="" />
+            <div>
+                <h3>Select your toppings:</h3>
+                <p>
+                    You can select multiple. (Any toppings after 3 topping is
+                    extra.)
+                </p>
+                <label htmlFor="pepperoni">Pepperoni</label>
+                <input type="checkbox" name="pepperoni" id="pepperoni" />
+                <label htmlFor="bacon">Bacon</label>
+                <input type="checkbox" name="bacon" id="bacon" />
+                <label htmlFor="chicken">chicken</label>
+                <input type="checkbox" name="chicken" id="chicken" />
+                <label htmlFor="itSausage">Italian Sausage</label>
+                <input type="checkbox" name="itSausage" id="itSausage" />
+                <label htmlFor="sausage">Sausage</label>
+                <input type="checkbox" name="sausage" id="sausage" />
+                <label htmlFor="beef">Beef</label>
+                <input type="checkbox" name="beef" id="beef" />
+                <label htmlFor="salami">Salami</label>
+                <input type="checkbox" name="salami" id="salami" />
+                <label htmlFor="ham">Ham</label>
+                <input type="checkbox" name="ham" id="ham" />
+                <label htmlFor="phillySteak">Philly Steak</label>
+                <input type="checkbox" name="phillySteak" id="phillySteak" />
+            </div>
+            <div>
+                <label htmlFor="crust">Select your crust:</label>
+                <select name="crust" id="crust">
+                    <option label="Thick" value="thick" />
+                    <option label="Thin" value="thin" />
+                    <option label="Gluten Free" value="glutenFree" />
+                </select>
+            </div>
+            <div>
+                <label for="specInstructs">
+                    <h3>Special Instructions</h3>
+                </div>
+                <textarea
+                    name="specInstructs"
+                    id="specInstructs"
+                    cols="40"
+                    rows="7"
+                />
             </label>
         </form>
     );
