@@ -22,15 +22,23 @@ export default function Form() {
 
     return (
         <form>
-            <label htmlFor="size">
-                <input id="size" type="text" name="size" />
-            </label>
+            <div>
+                <label htmlFor="size">
+                    <h4>Select your crust:</h4>
+                </label>
+                <select name="size" id="size">
+                    <option label="Select Size" value={null} />
+                    <option label="Large" value="large" />
+                    <option label="Medium" value="medium" />
+                    <option label="Small" value="small" />
+                </select>
+            </div>
 
             <div>
                 <h4>Pizza Sauce</h4>
                 <label htmlFor="pizzaSauce">
                     {/* Change */}
-                    <h5>Original Sauce</h5>
+                    <p>Original Sauce</p>
                     {/* Change */}
                     <input
                         id="pizzaSauce" //change
@@ -40,7 +48,7 @@ export default function Form() {
                     />
                 </label>
                 <label htmlFor="pizzaSauce">
-                    <h5>Healthy Sauce</h5>
+                    <p>Healthy Sauce</p>
                     <input
                         id="healthySauce"
                         type="radio"
@@ -49,7 +57,7 @@ export default function Form() {
                     />
                 </label>
                 <label htmlFor="garlicSauce">
-                    <h5>Garlic Parmesan Sauce</h5>
+                    <p>Garlic Parmesan Sauce</p>
                     <input
                         id="garlicSauce"
                         type="radio"
@@ -58,7 +66,7 @@ export default function Form() {
                     />
                 </label>
                 <label htmlFor="bbqSauce">
-                    <h5>BBQ Sauce</h5>
+                    <p>BBQ Sauce</p>
                     <input
                         id="bbqSauce"
                         type="radio"
@@ -67,7 +75,7 @@ export default function Form() {
                     />
                 </label>
                 <label htmlFor="alfredoSauce">
-                    <h5>Alfredo Sauce</h5>
+                    <p>Alfredo Sauce</p>
                     <input
                         id="alfredoSauce"
                         type="radio"
@@ -79,14 +87,14 @@ export default function Form() {
             <div>
                 <h3>Select your toppings:</h3>
                 <p>
-                    You can select multiple. (Any toppings after 3 topping is
-                    extra.)
+                    You can select multiple. (Any toppings after the 4th topping
+                    is extra.)
                 </p>
                 <label htmlFor="pepperoni">Pepperoni</label>
                 <input type="checkbox" name="pepperoni" id="pepperoni" />
                 <label htmlFor="bacon">Bacon</label>
                 <input type="checkbox" name="bacon" id="bacon" />
-                <label htmlFor="chicken">chicken</label>
+                <label htmlFor="chicken">Chicken</label>
                 <input type="checkbox" name="chicken" id="chicken" />
                 <label htmlFor="itSausage">Italian Sausage</label>
                 <input type="checkbox" name="itSausage" id="itSausage" />
@@ -104,6 +112,7 @@ export default function Form() {
             <div>
                 <label htmlFor="crust">Select your crust:</label>
                 <select name="crust" id="crust">
+                    <option label="Select Crust" value={null} />
                     <option label="Thick" value="thick" />
                     <option label="Thin" value="thin" />
                     <option label="Gluten Free" value="glutenFree" />
@@ -112,14 +121,31 @@ export default function Form() {
             <div>
                 <label for="specInstructs">
                     <h3>Special Instructions</h3>
-                </div>
+                </label>
                 <textarea
                     name="specInstructs"
                     id="specInstructs"
                     cols="40"
                     rows="7"
                 />
-            </label>
+            </div>
+            <div>
+                <label for="pizzaNumber">
+                    <h5>Number of Pizzas:</h5>{" "}
+                </label>
+                <input
+                    type="number"
+                    name="pizzaNumber"
+                    id="pizzaNumber"
+                    min="1"
+                    max="200"
+                    step="1"
+                />
+            </div>
+            <div>
+                <button type="reset">Reset</button>
+                <button type="submit">Add To Order</button>
+            </div>
         </form>
     );
 }

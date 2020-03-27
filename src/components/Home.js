@@ -6,8 +6,8 @@ export default function Home() {
         <section>
             <Nav />
             <h1>Lambda Eats</h1>
-            <p>Order your pizza here!</p>
             <p>Home of the square pizza made to fit in your pizza box!</p>
+            <p>Order your pizza here!</p>
         </section>
     );
 }
