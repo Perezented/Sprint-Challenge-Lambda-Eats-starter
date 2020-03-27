@@ -1,5 +1,5 @@
 describe("A test for Single Page Applications Sprint", function() {
-    it("Visiting the react app", function() {
+    it("Visiting the login in the app", function() {
         cy.visit("http://localhost:3000/login");
     });
     it("Does not allow empty fields", function() {

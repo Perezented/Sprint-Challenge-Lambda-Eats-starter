@@ -3,13 +3,16 @@ import * as yup from "yup";
 import axios from "axios";
 
 const formSchema = yup.object().shape({
-    name: yup.string().required("Name is required"),
-    email: yup
+    size: yup
         .string()
-        .email()
-        .required("Email is required"),
-    terms: yup.boolean().oneOf([true], "Need to read and accept the terms"),
-    password: yup.string().required("Password is required")
+        .required("Pick a size, I wont deliver just toppings to ya."),
+    sauce: yup.string(),
+    toppings: yup.string(),
+    crust: yup.string().required("You have to choose a crust."),
+    specialInstructions: yup.string(),
+    numberOfPizzas: yup
+        .string()
+        .required("Order a pizza, I wont delever no pizza to your address.")
 });
 
 export default function Form() {
@@ -94,17 +97,26 @@ export default function Form() {
                 <label htmlFor="size">
                     <h4>Select your crust:</h4>
                 </label>
-                <select name="size" id="size">
+                <select
+                    name="size"
+                    id="size"
+                    value={formState.name}
+                    onChange={inputChange}
+                >
                     <option label="Select Size" value={null} />
-                    <option value="large">Large</option>
-                    <option value="medium">Medium</option>
-                    <option value="small">Small</option>
+                    <option id="large">Large</option>
+                    <option id="medium">Medium</option>
+                    <option id="small">Small</option>
                 </select>
             </div>
 
             <div>
                 <h4>Pizza Sauce</h4>
-                <label htmlFor="pizzaSauce">
+                <label
+                    htmlFor="pizzaSauce"
+                    value={formState.name}
+                    onChange={inputChange}
+                >
                     {/* Change */}
                     <p>Original Sauce</p>
                     {/* Change */}
@@ -115,7 +127,11 @@ export default function Form() {
                         value="Pizza Sauce" //change
                     />
                 </label>
-                <label htmlFor="pizzaSauce">
+                <label
+                    htmlFor="pizzaSauce"
+                    value={formState.name}
+                    onChange={inputChange}
+                >
                     <p>Healthy Sauce</p>
                     <input
                         id="healthySauce"
@@ -124,7 +140,11 @@ export default function Form() {
                         value="Healthy Sauce"
                     />
                 </label>
-                <label htmlFor="garlicSauce">
+                <label
+                    htmlFor="garlicSauce"
+                    value={formState.name}
+                    onChange={inputChange}
+                >
                     <p>Garlic Parmesan Sauce</p>
                     <input
                         id="garlicSauce"
@@ -133,7 +153,11 @@ export default function Form() {
                         value="Garlic Parmesan Sauce"
                     />
                 </label>
-                <label htmlFor="bbqSauce">
+                <label
+                    htmlFor="bbqSauce"
+                    value={formState.name}
+                    onChange={inputChange}
+                >
                     <p>BBQ Sauce</p>
                     <input
                         id="bbqSauce"
@@ -142,7 +166,11 @@ export default function Form() {
                         value="BBQ Sauce"
                     />
                 </label>
-                <label htmlFor="alfredoSauce">
+                <label
+                    htmlFor="alfredoSauce"
+                    value={formState.name}
+                    onChange={inputChange}
+                >
                     <p>Alfredo Sauce</p>
                     <input
                         id="alfredoSauce"
@@ -178,8 +206,13 @@ export default function Form() {
                 <input type="checkbox" name="phillySteak" id="phillySteak" />
             </div>
             <div>
-                <label htmlFor="crust">Select your crust:</label>
-                <select name="crust" id="crust">
+                <label htmlFor="crust">Select your crust: </label>
+                <select
+                    name="crust"
+                    id="crust"
+                    value={formState.name}
+                    onChange={inputChange}
+                >
                     <option label="Select Crust" value={null} />
                     <option value="thick">Thick</option>
                     <option value="thin">Thin</option>
@@ -189,25 +222,27 @@ export default function Form() {
             <div>
                 <label for="specInstructs">
                     <h3>Special Instructions</h3>
+                    <textarea
+                        name="specInstructs"
+                        id="specInstructs"
+                        cols="40"
+                        rows="7"
+                    />
                 </label>
-                <textarea
-                    name="specInstructs"
-                    id="specInstructs"
-                    cols="40"
-                    rows="7"
-                />
             </div>
             <div>
-                <label for="pizzaNumber">
+                <label for="numberOfPizzas">
                     <h5>Number of Pizzas:</h5>{" "}
                 </label>
                 <input
                     type="number"
-                    name="pizzaNumber"
-                    id="pizzaNumber"
+                    name="numberOfPizzas"
+                    id="numberOfPizzas"
                     min="1"
                     max="200"
                     step="1"
+                    value={formState.name}
+                    onChange={inputChange}
                 />
             </div>
             <br />
