@@ -6,6 +6,9 @@ export default function Nav() {
             <Link to="/">
                 <button>Home</button>
             </Link>
+            <Link to="/login">
+                <button>Login</button>
+            </Link>
         </nav>
     );
 }

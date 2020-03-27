@@ -1,4 +1,16 @@
 import React, { useState, useEffect } from "react";
+import * as yup from "yup";
+import axios from "axios";
+
+const formSchema = yup.object().shape({
+    name: yup.string().required("Name is required"),
+    email: yup
+        .string()
+        .email()
+        .required("Email is required"),
+    terms: yup.boolean().oneOf([true], "Need to read and accept the terms"),
+    password: yup.string().required("Password is required")
+});
 
 export default function Form() {
     const [formState, setFormState] = useState({
@@ -19,18 +31,94 @@ export default function Form() {
     });
     const [post, setPost] = useState([]);
     const [greySubmit, setButtonOn] = useState(true);
+    useEffect(() => {
+        formSchema.isValid(formState).then(valid => {
+            setButtonOn(!valid);
+        });
+    }, [formState]);
+
+    const validateChange = event => {
+        yup.reach(formSchema, event.target.name)
+            .validate(event.target.value)
+            .then(valid => {
+                setError({
+                    ...error,
+                    [event.target.name]: ""
+                });
+            })
+            .catch(err => {
+                setError({
+                    ...error,
+                    [event.target.name]: err.errors[0]
+                });
+            });
+    };
+    const formSubmit = e => {
+        e.preventDefault();
+        console.log("form submitted!");
+        axios
+            .post("https://reqres.in/api/users", formState)
+            .then(res => {
+                setPost(res.data);
+                console.log("success", post);
+
+                setFormState({
+                    size: "",
+                    sauce: "",
+                    toppings: "",
+                    crust: "",
+                    specialInstructions: "",
+                    numberOfPizzas: ""
+                });
+            })
+            .catch(err => {
+                console.log(err.res);
+            });
+    };
+    const inputChange = event => {
+        event.persist();
+        const newerFormData = {
+            ...formState,
+            [event.target.name]:
+                event.target.type === "checkbox"
+                    ? event.target.checked
+                    : event.target.value
+        };
+        validateChange(event);
+        setFormState(newerFormData);
+    };
 
     return (
-        <form>
+        <form onSubmit={formSubmit}>
             <div>
                 <label htmlFor="size">
                     <h4>Select your crust:</h4>
                 </label>
                 <select name="size" id="size">
-                    <option label="Select Size" value={null} />
-                    <option label="Large" value="large" />
-                    <option label="Medium" value="medium" />
-                    <option label="Small" value="small" />
+                    <option
+                        label="Select Size"
+                        value={null}
+                        value={formState.size}
+                        onChange={inputChange}
+                    />
+                    <option
+                        label="Large"
+                        value="large"
+                        value={formState.size}
+                        onChange={inputChange}
+                    />
+                    <option
+                        label="Medium"
+                        value="medium"
+                        value={formState.size}
+                        onChange={inputChange}
+                    />
+                    <option
+                        label="Small"
+                        value="small"
+                        value={formState.size}
+                        onChange={inputChange}
+                    />
                 </select>
             </div>
 
@@ -44,7 +132,8 @@ export default function Form() {
                         id="pizzaSauce" //change
                         type="radio" //same
                         name="sauce" //same
-                        value="Pizza Sauce" //change
+                        value={formState.sauce} //change                    value={formState.name}
+                        onChange={inputChange}
                     />
                 </label>
                 <label htmlFor="pizzaSauce">
@@ -53,7 +142,8 @@ export default function Form() {
                         id="healthySauce"
                         type="radio"
                         name="sauce"
-                        value="Healthy Sauce"
+                        value={formState.sauce}
+                        onChange={inputChange}
                     />
                 </label>
                 <label htmlFor="garlicSauce">
@@ -62,7 +152,8 @@ export default function Form() {
                         id="garlicSauce"
                         type="radio"
                         name="sauce"
-                        value="Garlic Parmesan Sauce"
+                        value={formState.sauce}
+                        onChange={inputChange}
                     />
                 </label>
                 <label htmlFor="bbqSauce">
@@ -71,7 +162,8 @@ export default function Form() {
                         id="bbqSauce"
                         type="radio"
                         name="sauce"
-                        value="BBQ Sauce"
+                        value={formState.sauce}
+                        onChange={inputChange}
                     />
                 </label>
                 <label htmlFor="alfredoSauce">
@@ -80,7 +172,8 @@ export default function Form() {
                         id="alfredoSauce"
                         type="radio"
                         name="sauce"
-                        value="Alfredo Sauce"
+                        value={formState.sauce}
+                        onChange={inputChange}
                     />
                 </label>
             </div>
@@ -91,27 +184,86 @@ export default function Form() {
                     is extra.)
                 </p>
                 <label htmlFor="pepperoni">Pepperoni</label>
-                <input type="checkbox" name="pepperoni" id="pepperoni" />
+                <input
+                    type="checkbox"
+                    name="pepperoni"
+                    id="pepperoni"
+                    value={formState.toppings}
+                    onChange={inputChange}
+                />
                 <label htmlFor="bacon">Bacon</label>
-                <input type="checkbox" name="bacon" id="bacon" />
+                <input
+                    type="checkbox"
+                    name="bacon"
+                    id="bacon"
+                    value={formState.toppings}
+                    onChange={inputChange}
+                />
                 <label htmlFor="chicken">Chicken</label>
-                <input type="checkbox" name="chicken" id="chicken" />
+                <input
+                    type="checkbox"
+                    name="chicken"
+                    id="chicken"
+                    value={formState.toppings}
+                    onChange={inputChange}
+                />
                 <label htmlFor="itSausage">Italian Sausage</label>
-                <input type="checkbox" name="itSausage" id="itSausage" />
+                <input
+                    type="checkbox"
+                    name="itSausage"
+                    id="itSausage"
+                    value={formState.toppings}
+                    onChange={inputChange}
+                />
                 <label htmlFor="sausage">Sausage</label>
-                <input type="checkbox" name="sausage" id="sausage" />
+                <input
+                    type="checkbox"
+                    name="sausage"
+                    id="sausage"
+                    value={formState.toppings}
+                    onChange={inputChange}
+                />
                 <label htmlFor="beef">Beef</label>
-                <input type="checkbox" name="beef" id="beef" />
+                <input
+                    type="checkbox"
+                    name="beef"
+                    id="beef"
+                    value={formState.toppings}
+                    onChange={inputChange}
+                />
                 <label htmlFor="salami">Salami</label>
-                <input type="checkbox" name="salami" id="salami" />
+                <input
+                    type="checkbox"
+                    name="salami"
+                    id="salami"
+                    value={formState.toppings}
+                    onChange={inputChange}
+                />
                 <label htmlFor="ham">Ham</label>
-                <input type="checkbox" name="ham" id="ham" />
+                <input
+                    type="checkbox"
+                    name="ham"
+                    id="ham"
+                    value={formState.toppings}
+                    onChange={inputChange}
+                />
                 <label htmlFor="phillySteak">Philly Steak</label>
-                <input type="checkbox" name="phillySteak" id="phillySteak" />
+                <input
+                    type="checkbox"
+                    name="phillySteak"
+                    id="phillySteak"
+                    value={formState.toppings}
+                    onChange={inputChange}
+                />
             </div>
             <div>
                 <label htmlFor="crust">Select your crust:</label>
-                <select name="crust" id="crust">
+                <select
+                    name="crust"
+                    id="crust"
+                    value={formState.crust}
+                    onChange={inputChange}
+                >
                     <option label="Select Crust" value={null} />
                     <option label="Thick" value="thick" />
                     <option label="Thin" value="thin" />
@@ -130,21 +282,28 @@ export default function Form() {
                 />
             </div>
             <div>
-                <label for="pizzaNumber">
+                <label for="numberOfPizzas">
                     <h5>Number of Pizzas:</h5>{" "}
                 </label>
                 <input
                     type="number"
-                    name="pizzaNumber"
-                    id="pizzaNumber"
+                    name="numberOfPizzas"
+                    id="numberOfPizzas"
                     min="1"
                     max="200"
                     step="1"
+                    value={formState.numberOfPizzas}
+                    onChange={inputChange}
                 />
             </div>
+            <br />
+            <pre>{JSON.stringify(post, null, 2)}</pre>
+
             <div>
                 <button type="reset">Reset</button>
-                <button type="submit">Add To Order</button>
+                <button type="submit" disabled={greySubmit}>
+                    Add to order!
+                </button>
             </div>
         </form>
     );
