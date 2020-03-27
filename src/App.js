@@ -2,17 +2,17 @@ import React from "react";
 import { Route, Link } from "react-router-dom";
 import TopBanner from "./components/TopBanner";
 import Form from "./components/PizzaForm";
-
+import Home from "./components/Home";
 const App = () => {
     return (
         <>
             <TopBanner />
-            <Route exact path="/">
-                <Home />
-            </Route>
-            <p>Home of the square pizza made to fit in your pizza box!</p>
-            <p>Order your pizza here!</p>
-
+            <div>
+                {" "}
+                <Route exact path="/">
+                    <Home />
+                </Route>
+            </div>
             <Route path="/pizza/" component={Form} />
         </>
     );
