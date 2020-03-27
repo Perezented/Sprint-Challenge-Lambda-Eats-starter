@@ -1,6 +1,6 @@
 describe("A test for User Forms Project", function() {
     it("Visiting the react app", function() {
-        cy.visit("http://localhost:3000/");
+        cy.visit("http://localhost:3000/login");
     });
     it("Does not allow empty fields", function() {
         //name
